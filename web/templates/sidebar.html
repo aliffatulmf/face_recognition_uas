@@ -1,0 +1,97 @@
+{{ define "sidebar.html" }}
+<ul class="navbar-nav">
+    <li class="nav-item">
+        <a class="nav-link" href="/web/dataset">
+            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <!-- Download SVG icon from http://tabler-icons.io/i/forms -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M12 3a3 3 0 0 0 -3 3v12a3 3 0 0 0 3 3" />
+                    <path d="M6 3a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3" />
+                    <path d="M13 7h7a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-7" />
+                    <path d="M5 7h-1a1 1 0 0 0 -1 1v8a1 1 0 0 0 1 1h1" />
+                    <path d="M17 12h.01" />
+                    <path d="M13 12h.01" />
+                </svg>
+            </span>
+            <span class="nav-link-title">
+                Dataset Input
+            </span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/web/dataset/list">
+            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                    <path d="M12 21h-5a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v4.5" />
+                    <circle cx="16.5" cy="17.5" r="2.5" />
+                    <line x1="18.5" y1="19.5" x2="21" y2="22" />
+                </svg>
+            </span>
+            <span class="nav-link-title">
+                Dataset List
+            </span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/web/dataset/training">
+            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <line x1="12" y1="6" x2="12" y2="3" />
+                    <line x1="16.25" y1="7.75" x2="18.4" y2="5.6" />
+                    <line x1="18" y1="12" x2="21" y2="12" />
+                    <line x1="16.25" y1="16.25" x2="18.4" y2="18.4" />
+                    <line x1="12" y1="18" x2="12" y2="21" />
+                    <line x1="7.75" y1="16.25" x2="5.6" y2="18.4" />
+                    <line x1="6" y1="12" x2="3" y2="12" />
+                    <line x1="7.75" y1="7.75" x2="5.6" y2="5.6" />
+                </svg>
+            </span>
+            <span class="nav-link-title">
+                Training Dataset
+            </span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/web/face/recognizing">
+            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M4 8v-2a2 2 0 0 1 2 -2h2" />
+                    <path d="M4 16v2a2 2 0 0 0 2 2h2" />
+                    <path d="M16 4h2a2 2 0 0 1 2 2v2" />
+                    <path d="M16 20h2a2 2 0 0 0 2 -2v-2" />
+                    <line x1="9" y1="10" x2="9.01" y2="10" />
+                    <line x1="15" y1="10" x2="15.01" y2="10" />
+                    <path d="M9.5 15a3.5 3.5 0 0 0 5 0" />
+                </svg>
+            </span>
+            <span class="nav-link-title">
+                Recognize Faces
+            </span>
+        </a>
+    </li>
+</ul>
+<!-- <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
+    <form action="." method="get">
+      <div class="input-icon">
+        <span class="input-icon-addon">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <circle cx="10" cy="10" r="7" />
+            <line x1="21" y1="21" x2="15" y2="15" />
+          </svg>
+        </span>
+        <input type="text" class="form-control" placeholder="Search…" aria-label="Search in website">
+      </div>
+    </form>
+  </div> -->
+{{ end }}

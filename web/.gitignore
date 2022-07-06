@@ -1,0 +1,7 @@
+*.exe
+*.jpeg
+*.png
+
+.vscode
+**/env
+**/dataset/**
