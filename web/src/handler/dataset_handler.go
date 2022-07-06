@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"io/fs"
+	"io/ioutil"
 	"mime/multipart"
 	"net/http"
 	"os"
@@ -130,9 +131,9 @@ func (web datasetHandler) FaceRecognize(ctx *gin.Context) {
 
 	uuid := uuid.NewString()
 	ext := strings.Split(data.Target.Filename, ".")
-	path := filepath.Join("face_recognition/temp", fmt.Sprintf("%s.%s", uuid, ext[len(ext)-1]))
+	ipath := filepath.Join("face_recognition/temp", fmt.Sprintf("%s.%s", uuid, ext[len(ext)-1]))
 
-	err := ctx.SaveUploadedFile(data.Target, path)
+	err := ctx.SaveUploadedFile(data.Target, ipath)
 	if err != nil {
 		ctx.HTML(http.StatusOK, "face_recognize.html", gin.H{
 			"message": err.Error(),
@@ -141,7 +142,7 @@ func (web datasetHandler) FaceRecognize(ctx *gin.Context) {
 		return
 	}
 
-	label := src.FaceRecognize(path)
+	label := src.FaceRecognize(ipath)
 	if label != "Unknown" {
 		arr := strings.Split(label, ".")
 		trimed := strings.TrimSuffix(arr[1], "\r\n")
@@ -150,6 +151,23 @@ func (web datasetHandler) FaceRecognize(ctx *gin.Context) {
 		label = fmt.Sprintf(
 			"Found\nName: %s\nIdentifier: %s", fnd.Name, fnd.Identifier,
 		)
+
+		// POST to server
+		host := "http://103.189.234.30:8081/api/v1/attendance"
+
+		payload := strings.NewReader(
+			fmt.Sprintf("-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"name\"\r\n\r\n%s\r\n-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"image\"; filename=\"%s\"\r\nContent-Type: image/png\r\n\r\n\r\n-----011000010111000001101001\r\nContent-Disposition: form-data; name=\"identifier\"\r\n\r\n%s\r\n-----011000010111000001101001--\r\n", fnd.Name, ipath, fnd.Identifier),
+		)
+
+		req, _ := http.NewRequest("POST", host, payload)
+
+		req.Header.Add("Content-Type", "multipart/form-data; boundary=---011000010111000001101001")
+
+		res, _ := http.DefaultClient.Do(req)
+		defer res.Body.Close()
+		body, _ := ioutil.ReadAll(res.Body)
+
+		fmt.Println(string(body))
 	}
 
 	ctx.HTML(http.StatusOK, "face_recognize.html", gin.H{
